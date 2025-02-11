@@ -24,6 +24,26 @@ section {
     border-radius: 10px;
 }
 
+/* Floating hearts animation */
+.heart {
+    position: fixed;
+    color: red;
+    font-size: 20px;
+    animation: floatHearts linear infinite;
+    pointer-events: none;
+}
+
+@keyframes floatHearts {
+    0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+    }
+}
+
 button {
     background: #ff4b5c;
     color: white;

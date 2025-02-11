@@ -192,6 +192,25 @@ function revealGift() {
     
 }
 
+function createFloatingHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    
+    heart.style.left = Math.random() * window.innerWidth + "px"; // Random horizontal position
+    heart.style.animationDuration = Math.random() * 3 + 2 + "s"; // Random speed
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove(); // Remove after animation
+    }, 5000);
+}
+
+// Generate hearts every 500ms
+setInterval(createFloatingHeart, 500);
+
+
 // Function to reveal the surprise gift
 function revealGift() {
     const message = document.getElementById("gift-message");
