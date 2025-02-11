@@ -24,13 +24,24 @@ section {
     border-radius: 10px;
 }
 
-/* Floating hearts animation */
-.heart {
+/* Floating hearts container covering entire page */
+.heart-container {
     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1000; /* Keep hearts on top of everything */
+    pointer-events: none; /* Prevent interference with other elements */
+}
+
+/* Floating heart animation */
+.heart {
+    position: absolute;
     color: red;
     font-size: 20px;
+    opacity: 0.8;
     animation: floatHearts linear infinite;
-    pointer-events: none;
 }
 
 @keyframes floatHearts {
@@ -43,6 +54,7 @@ section {
         opacity: 0;
     }
 }
+
 
 button {
     background: #ff4b5c;

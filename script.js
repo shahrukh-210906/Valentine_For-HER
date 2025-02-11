@@ -192,23 +192,33 @@ function revealGift() {
     
 }
 
-function createFloatingHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️";
-    
-    heart.style.left = Math.random() * window.innerWidth + "px"; // Random horizontal position
-    heart.style.animationDuration = Math.random() * 3 + 2 + "s"; // Random speed
+document.addEventListener("DOMContentLoaded", function () {
+    const heartContainer = document.createElement("div");
+    heartContainer.classList.add("heart-container");
+    document.body.appendChild(heartContainer);
 
-    document.body.appendChild(heart);
+    function createFloatingHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
 
-    setTimeout(() => {
-        heart.remove(); // Remove after animation
-    }, 5000);
-}
+        // Random position anywhere on the page
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = Math.random() * window.innerHeight + "px";
+        heart.style.animationDuration = Math.random() * 5 + 3 + "s"; // Random speed
+        heart.style.fontSize = Math.random() * 20 + 10 + "px"; // Varying sizes
 
-// Generate hearts every 500ms
-setInterval(createFloatingHeart, 500);
+        heartContainer.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove(); // Remove after animation
+        }, 5000);
+    }
+
+    // Generate hearts every 300ms
+    setInterval(createFloatingHeart, 300);
+});
+
 
 
 // Function to reveal the surprise gift
