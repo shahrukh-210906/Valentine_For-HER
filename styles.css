@@ -39,12 +39,8 @@ button:hover {
     background: #ff2e4c;
 }
 
-#gift-image {
-    margin-top: 20px;
-    border-radius: 10px;
-    
-    height: 300px;
-    
+#gift-video{
+    rotate: 90;
 }
 
 #starry-sky {

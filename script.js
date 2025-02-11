@@ -188,11 +188,18 @@ function resetGame() {
     resetButton.style.display = "none";
 }
 
+function revealGift() {
+    
+}
 
 // Function to reveal the surprise gift
 function revealGift() {
-    document.getElementById("gift-message").style.display = "block";
-    document.getElementById("gift-image").style.display = "block";
+    const message = document.getElementById("gift-message");
+    const video = document.getElementById("gift-video");
+
+    message.style.display = "block";  // Show the text message
+    video.style.display = "block";  // Show the video
+    video.play();  // Auto-play the video
 }
 
 // Enhance the starry background effect
