@@ -71,8 +71,8 @@ button:hover {
     background: #ff2e4c;
 }
 
-#gift-video{
-    rotate: 90;
+#gift-video {
+    transform: rotate(270deg); /* Correct property for rotation */
 }
 
 #starry-sky {
@@ -166,3 +166,67 @@ ul li{
     text-align: left;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(to bottom, #ff758c, #ff7eb3);
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.game-container {
+    margin-top: 20px;
+}
+
+.game-area {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    background: white;
+    border-radius: 10px;
+    margin: auto;
+    overflow: hidden;
+    border: 2px solid #ff4b5c;
+}
+
+#basket {
+    position: absolute;
+    bottom: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: left 0.1s;
+}
+
+.heart {
+    position: absolute;
+    font-size: 24px;
+    color: red;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#lives, #score {
+    margin: 10px;
+    font-size: 18px;
+}
+
+#restart-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    background: #ff4b5c;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+}
+
+#restart-btn:hover {
+    background: #ff2e4c;
+}

@@ -221,6 +221,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
+
 // Function to reveal the surprise gift
 function revealGift() {
     const message = document.getElementById("gift-message");
@@ -281,3 +283,82 @@ function animate() {
 }
 
 animate();
+
+const gameArea = document.querySelector(".game-area");
+const basket = document.getElementById("basket");
+const scoreDisplay = document.getElementById("score-count");
+const livesDisplay = document.getElementById("lives-count");
+const restartBtn = document.getElementById("restart-btn");
+
+let basketPosition = 125;
+let score = 0;
+let lives = 5;
+let gameInterval;
+
+// Move basket left and right
+document.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft" && basketPosition > 0) {
+        basketPosition -= 20;
+    } else if (event.key === "ArrowRight" && basketPosition < 250) {
+        basketPosition += 20;
+    }
+    basket.style.left = basketPosition + "px";
+});
+
+// Function to create falling hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 280 + "px"; // Random x position
+    heart.style.top = "0px"; // Start from top
+    gameArea.appendChild(heart);
+
+    let heartFall = setInterval(() => {
+        let heartTop = parseInt(window.getComputedStyle(heart).getPropertyValue("top"));
+        heart.style.top = heartTop + 5 + "px"; // Move heart down
+
+        // Check if heart is caught
+        if (heartTop > 350) {
+            let basketLeft = basket.offsetLeft;
+            let heartLeft = heart.offsetLeft;
+
+            if (heartLeft > basketLeft - 30 && heartLeft < basketLeft + 50) {
+                score++;
+                scoreDisplay.innerText = score;
+                clearInterval(heartFall);
+                heart.remove();
+            } else {
+                lives--;
+                livesDisplay.innerText = lives;
+                clearInterval(heartFall);
+                heart.remove();
+
+                if (lives === 0) {
+                    clearInterval(gameInterval);
+                    alert("Game Over! Your score: " + score);
+                    restartBtn.style.display = "block";
+                }
+            }
+        }
+    }, 50);
+}
+
+// Function to start game
+function startGame() {
+    restartBtn.style.display = "none";
+    score = 0;
+    lives = 5;
+    scoreDisplay.innerText = score;
+    livesDisplay.innerText = lives;
+    gameInterval = setInterval(createHeart, 1000);
+}
+
+// Function to restart game
+function restartGame() {
+    document.querySelectorAll(".heart").forEach(heart => heart.remove());
+    startGame();
+}
+
+startGame();
+
