@@ -60,7 +60,28 @@ function revealGift() {
     video.play();  
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    const spotifyPlayer = document.getElementById("spotify-player");
 
+    function playMusic() {
+        spotifyPlayer.src += "?autoplay=1"; // Add autoplay to the URL
+        document.removeEventListener("click", playMusic); // Remove event listener after first interaction
+    }
+
+    document.addEventListener("click", playMusic); // Triggers autoplay after any click
+});
+
+document.getElementById("show-letter-btn").addEventListener("click", function () {
+    const letter = document.getElementById("letter");
+    letter.style.display = "block";
+    letter.style.opacity = "0";
+    this.style.display = "none"; // Hide button after clicking
+
+    setTimeout(() => {
+        letter.style.transition = "opacity 1.5s ease-in-out";
+        letter.style.opacity = "1";
+    }, 100);
+});
 
 // Function to check answer for the quiz
 function checkAnswer(answer) {
