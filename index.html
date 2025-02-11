@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day ❤️</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <section id="landing">
+            <h1>Happy Valentine's Day, My Love! ❤️</h1>
+            <p>Scroll down for a surprise!</p>
+        </section>
+        
+        <section id="our-journey">
+            <h2>Our Journey & Favorite Moments</h2>
+            <p>Every moment with you is special, but here are some that mean the most to me:</p>
+            <div class="screenshots">
+                <img src="IMG_9565.JPG" alt="Our first chat" class="journey-img">
+                <img src="IMG_9566.JPG" alt="A special moment" class="journey-img">
+                <img src="IMG_9568.JPG" alt="Funny conversation" class="journey-img">
+            </div>
+            <ul>
+                <li>💌 The Proposal - The moment I asked, and you said yes!</li>
+                <li>💋 Our First Kiss - A moment I'll never forget.</li>
+                <li>💖 How I Felt - That feeling of being the luckiest person alive.</li>
+            </ul>
+            <img src="IMG_9600.JPG" alt="Us together" class="favorite-moment-img">
+        </section>
+        
+        <section id="love-letter">
+            <h2>A Letter for You</h2>
+            <p id="letter"></p>
+        </section>
+        
+        <section id="music-video">
+            <h2>Our Songs & Memories</h2>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7fY8qVujvm5lZBrt5Y1sIJ?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </section>
+        
+        <section id="reasons">
+            <h2>Why I Love You</h2>
+            <ul id="reasons-list">
+                <li>Your smile lights up my world.</li>
+                <li>You make every moment special.</li>
+                <li>You are my best friend and soulmate.</li>
+            </ul>
+            <button onclick="showMoreReasons()">More Reasons ❤️</button>
+        </section>
+        
+        <section id="quiz">
+            <h2>Love Quiz</h2>
+            <p>Will you be mine?</p>
+            <button onclick="checkAnswer('correct')">Yes ❤️</button>
+            <button onclick="checkAnswer('wrong')">No 😢</button>
+            <p id="quiz-response" style="display:none;"></p>
+        </section>
+        
+        <section id="relationship-quiz">
+            <h2>How Well Do You Know Us? 💕</h2>
+            <p>Answer these fun questions about our relationship!</p>
+            <form id="relationship-quiz-form">
+                <label>✨ What was the first thing you noticed about me?</label>
+                <input type="text" name="question1"><br>
+                
+                <label>💬 What’s my favorite way to say "I love you"?</label>
+                <input type="text" name="question2"><br>
+                
+                <label>🍽️ If we went on a date, what food would I order first?</label>
+                <input type="text" name="question3"><br>
+                
+                <label>🎶 Which song reminds you of us?</label>
+                <input type="text" name="question4"><br>
+                
+                <label>📅 What special date do you remember the most?</label>
+                <input type="text" name="question5"><br>
+                
+                <button type="submit">Submit Answers</button>
+            </form>
+        </section>
+        
+        <<section id="rock-paper-scissors">
+            <h2>Rock, Paper, Scissors! 🎮</h2>
+            <p>Play against LoveBot and be the first to 3 wins! 💕</p>
+        
+            <div id="hands-container" class="hands">
+                <span>✊</span> <span>✋</span>
+            </div>
+        
+            <div class="choice-buttons">
+                <button onclick="playGame('rock')">✊ Rock</button>
+                <button onclick="playGame('paper')">✋ Paper</button>
+                <button onclick="playGame('scissors')">✌️ Scissors</button>
+            </div>
+        
+            <p id="user-choice"></p>
+            <p id="computer-choice"></p>
+            <p id="result" class="result"></p>
+        
+            <div id="scoreboard">
+                <h3>Scoreboard 🏆</h3>
+                <p>You: <span id="user-score">0</span> | LoveBot: <span id="computer-score">0</span></p>
+            </div>
+        
+            <p id="game-over-message" class="game-over" style="display:none;"></p>
+            
+            <button id="reset-button" onclick="resetGame()" style="display:none;">Play Again 🔄</button>
+        
+            <div id="celebration"></div>
+        </section>
+        
+        
+        
+        <section id="gift">
+            <h2>Your Surprise Gift</h2>
+            <button onclick="revealGift()">Open Gift 🎁</button>
+            <p id="gift-message" style="display:none;">I love you forever! ❤️</p>
+            <img id="gift-image" src="IMG_9601.JPG" style="display:none; width:500px;" alt="Gift" style="padding-left: 100px;">
+        </section>
+        
+        <section id="stars">
+            <h2>Look at the Stars ✨</h2>
+            <canvas id="starry-sky"></canvas>
+        </section>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        const canvas = document.getElementById("starry-sky");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        function drawHeartShape() {
+            ctx.fillStyle = "white";
+            ctx.beginPath();
+            ctx.moveTo(300, 200);
+            ctx.bezierCurveTo(300, 100, 450, 100, 450, 200);
+            ctx.bezierCurveTo(450, 300, 300, 400, 300, 500);
+            ctx.bezierCurveTo(300, 400, 150, 300, 150, 200);
+            ctx.bezierCurveTo(150, 100, 300, 100, 300, 200);
+            ctx.fill();
+        }
+        
+        function drawLetterS() {
+            ctx.font = "60px Arial";
+            ctx.fillStyle = "white";
+            ctx.fillText("S", 200, 250);
+        }
+        
+        function drawLetterH() {
+            ctx.font = "60px Arial";
+            ctx.fillStyle = "white";
+            ctx.fillText("H", 400, 250);
+        }
+        
+        function drawScene() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawHeartShape();
+            drawLetterS();
+            drawLetterH();
+        }
+        
+        drawScene();
+    </script>
+</body>
+</html>
