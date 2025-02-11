@@ -129,5 +129,8 @@ button:hover {
     border: lightpink;
 }
 .favorite-moment-img{
-    width: 300;
+    width: 300px;
+}
+ul li{
+    text-align: left;
 }
