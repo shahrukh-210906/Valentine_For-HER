@@ -42,6 +42,10 @@ button:hover {
 #gift-image {
     margin-top: 20px;
     border-radius: 10px;
+    margin-left: 220px;
+    margin-right: 220px;
+    height: 300px;
+    
 }
 
 #starry-sky {
@@ -134,3 +138,4 @@ button:hover {
 ul li{
     text-align: left;
 }
+
