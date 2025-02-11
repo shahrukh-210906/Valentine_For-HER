@@ -61,6 +61,7 @@ function revealGift() {
 }
 
 
+
 // Function to check answer for the quiz
 function checkAnswer(answer) {
     const response = document.getElementById("quiz-response");
