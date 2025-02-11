@@ -156,49 +156,14 @@
         
         <section id="stars">
             <h2>Look at the Stars ✨</h2>
+            
             <canvas id="starry-sky"></canvas>
+
         </section>
     </div>
     
     
     <script src="script.js"></script>
-    <script>
-        const canvas = document.getElementById("starry-sky");
-        const ctx = canvas.getContext("2d");
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        
-        function drawHeartShape() {
-            ctx.fillStyle = "white";
-            ctx.beginPath();
-            ctx.moveTo(300, 200);
-            ctx.bezierCurveTo(300, 100, 450, 100, 450, 200);
-            ctx.bezierCurveTo(450, 300, 300, 400, 300, 500);
-            ctx.bezierCurveTo(300, 400, 150, 300, 150, 200);
-            ctx.bezierCurveTo(150, 100, 300, 100, 300, 200);
-            ctx.fill();
-        }
-        
-        function drawLetterS() {
-            ctx.font = "60px Arial";
-            ctx.fillStyle = "white";
-            ctx.fillText("S", 200, 250);
-        }
-        
-        function drawLetterH() {
-            ctx.font = "60px Arial";
-            ctx.fillStyle = "white";
-            ctx.fillText("H", 400, 250);
-        }
-        
-        function drawScene() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawHeartShape();
-            drawLetterS();
-            drawLetterH();
-        }
-        
-        drawScene();
-    </script>
+    
 </body>
 </html>

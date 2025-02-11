@@ -299,4 +299,78 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", revealOnScroll);
     revealOnScroll(); // Run on page load in case some images are visible initially
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const images = document.querySelectorAll(".journey-img, .favorite-moment-img");
 
+    function revealOnScroll() {
+        images.forEach(img => {
+            const imgTop = img.getBoundingClientRect().top;
+            if (imgTop < window.innerHeight * 0.85) {
+                img.classList.add("reveal");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll(); // Run on page load in case it's already in view
+});
+
+
+// Heart Formation with Stars
+function setupHeartFormation() {
+    const button = document.getElementById("start-heart-formation");
+    const canvas = document.getElementById("starry-sky");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    let stars = [];
+    for (let i = 0; i < 100; i++) {
+        stars.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            targetX: 0,
+            targetY: 0,
+            size: 2 + Math.random() * 3
+        });
+    }
+    
+    button.addEventListener("click", () => {
+        arrangeStarsIntoHeart();
+    });
+    
+    function arrangeStarsIntoHeart() {
+        let heartPoints = [];
+        for (let t = 0; t < Math.PI * 2; t += 0.1) {
+            let x = 250 + 100 * (16 * Math.pow(Math.sin(t), 3));
+            let y = 250 - 100 * (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+            heartPoints.push({ x, y });
+        }
+        
+        stars.forEach((star, index) => {
+            let target = heartPoints[index % heartPoints.length];
+            star.targetX = target.x + canvas.width / 2 - 250;
+            star.targetY = target.y + canvas.height / 2 - 250;
+        });
+        animateStars();
+    }
+    
+    function animateStars() {
+        let progress = 0;
+        let interval = setInterval(() => {
+            progress += 0.02;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            stars.forEach(star => {
+                star.x += (star.targetX - star.x) * progress;
+                star.y += (star.targetY - star.y) * progress;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                ctx.fillStyle = "white";
+                ctx.fill();
+            });
+            
+            if (progress >= 1) clearInterval(interval);
+        }, 50);
+    }
+}
